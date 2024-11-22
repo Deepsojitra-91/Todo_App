@@ -19,7 +19,6 @@ This is a simple **To-Do List** web application built using **Flask** for beginn
 - **Backend**: Flask (Python)
 - **Database**: MySQL
 - **Frontend**: HTML, Tailwind CSS
-- **Templating Engine**: Jinja2
 
 ---
 
