@@ -42,11 +42,11 @@ This is a simple **To-Do List** web application built using **Flask** for beginn
     - Use the following table schema:
       ```sql
       CREATE TABLE tasks (
-          id INT AUTO_INCREMENT PRIMARY KEY,
-          title VARCHAR(255) NOT NULL,
-          description TEXT NOT NULL,
-          priority ENUM('High', 'Medium', 'Low') NOT NULL
-      );
+        id INT AUTO_INCREMENT PRIMARY KEY,       -- Unique ID for each task
+        title VARCHAR(255) NOT NULL,             -- Title of the task
+        description TEXT,                        -- Description of the task
+        priority INT NOT NULL,                   -- Priority of the task
+    );
       ```
     - Update your MySQL credentials in the `config.py` file.
 
