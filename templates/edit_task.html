@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold text-center my-6">Edit Task</h1>
+
+    <form method="POST" class="bg-white p-6 rounded-lg shadow-md space-y-4">
+        <div>
+            <label for="title" class="block text-sm font-medium text-gray-700">Task Title</label>
+            <input type="text" name="title" id="title" value="{{ task[1] }}" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md" />
+        </div>
+
+        <div>
+            <label for="description" class="block text-sm font-medium text-gray-700">Task Description</label>
+            <textarea name="description" id="description" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md">{{ task[2] }}</textarea>
+        </div>
+
+        <div>
+            <label for="priority" class="block text-sm font-medium text-gray-700">Priority</label>
+            <select name="priority" id="priority" class="mt-1 p-2 block w-full border border-gray-300 rounded-md">
+                <option value="High" {% if task[3] == 'High' %}selected{% endif %}>High</option>
+                <option value="Medium" {% if task[3] == 'Medium' %}selected{% endif %}>Medium</option>
+                <option value="Low" {% if task[3] == 'Low' %}selected{% endif %}>Low</option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md">Update Task</button>
+        </div>
+    </form>
+{% endblock %}

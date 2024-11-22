@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold text-center my-6">To-Do List</h1>
+
+    <!-- Filter form -->
+    <div class="mb-4 flex justify-between">
+        <form method="GET" class="flex space-x-2" id="filter-form">
+            <select name="priority" class="text-black text-m p-3 rounded-md bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800" onchange="this.form.submit()">
+                <option value="">All Priorities</option>
+                <option value="High" {% if selected_priority == 'High' %}selected{% endif %}>High</option>
+                <option value="Medium" {% if selected_priority == 'Medium' %}selected{% endif %}>Medium</option>
+                <option value="Low" {% if selected_priority == 'Low' %}selected{% endif %}>Low</option>
+            </select>
+        </form>
+    </div>
+
+    <!-- Display tasks -->
+    <div class="bg-white p-4 rounded-lg shadow-md">
+        <table class="min-w-full table-auto">
+            <thead class="bg-[#F8DE7E] h-10 text-m">
+                <tr>
+                    <th class="p-2">Title</th>
+                    <th class="p-2">Description</th>
+                    <th class="p-2">Priority</th>
+                    <th class="p-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                    <tr class="border-b text-center text-m">
+                        <td class="p-2">{{ task[1] }}</td>
+                        <td class="p-2">{{ task[2] }}</td>
+                        <td class="p-2">{{ task[3] }}</td>
+                        <td class="p-2">
+                            <!-- Edit button -->
+                            <button onclick="window.location.href='{{ url_for('edit_task', id=task[0]) }}'" class="rounded-lg text-sm px-3 py-1 text-center bg-blue-500 hover:text-blue-700 text-white">
+                                <i class="fas fa-pencil-alt text-xl"></i>
+                            </button>
+                            <!-- Delete button -->
+                            <button onclick="window.location.href='{{ url_for('delete_task', id=task[0]) }}'" class="rounded-lg text-sm px-3 py-1 text-center bg-red-500 hover:text-red-700 text-lg text-white">
+                                <i class="fas fa-trash text-xl"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
