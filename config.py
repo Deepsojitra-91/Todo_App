@@ -3,7 +3,7 @@ import pymysql
 # Database configuration
 DB_HOST = 'localhost'
 DB_USER = 'root'
-DB_PASSWORD = 'Deep@$915736'  # Replace with your MySQL password
+DB_PASSWORD = '<your database password>'  # Replace with your MySQL password
 DB_NAME = 'todo_app'
 
 def get_db_connection():
