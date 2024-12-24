@@ -1,30 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="text-3xl font-bold text-center my-6">Edit Task</h1>
+    <h1 class="text-5xl font-bold text-center my-8 text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Edit Task</h1>
+    <div class="flex justify-center">
+        <form method="POST" class="bg-white p-8 rounded-lg shadow-2xl space-y-6 w-full max-w-2xl">
+            <div>
+                <label for="title" class="block text-lg font-medium text-gray-700 mb-1">Task Title :</label>
+                <input type="text" name="title" id="title" value="{{ task[1] }}" required class="p-3 block w-full border-2 rounded-md shadow-sm sm:text-m transition duration-300 ease-in-out" />
+            </div>
 
-    <form method="POST" class="bg-white p-6 rounded-lg shadow-md space-y-4">
-        <div>
-            <label for="title" class="block text-sm font-medium text-gray-700">Task Title</label>
-            <input type="text" name="title" id="title" value="{{ task[1] }}" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md" />
-        </div>
+            <div>
+                <label for="description" class="block text-lg font-medium text-gray-700 mb-1">Task Description :</label>
+                <textarea name="description" id="description" required class="p-3 block w-full border-2 rounded-md shadow-sm sm:text-m transition duration-300 ease-in-out" rows="4">{{ task[2] }}</textarea>
+            </div>
 
-        <div>
-            <label for="description" class="block text-sm font-medium text-gray-700">Task Description</label>
-            <textarea name="description" id="description" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md">{{ task[2] }}</textarea>
-        </div>
+            <div>
+                <label for="priority" class="block text-lg font-medium text-gray-700 mb-1">Priority :</label>
+                <select name="priority" id="priority" class="p-3 block w-full border-2 rounded-md shadow-sm sm:text-m transition duration-300 ease-in-out">
+                    <option value="High" {% if task[3] == 'High' %}selected{% endif %}>High</option>
+                    <option value="Medium" {% if task[3] == 'Medium' %}selected{% endif %}>Medium</option>
+                    <option value="Low" {% if task[3] == 'Low' %}selected{% endif %}>Low</option>
+                </select>
+            </div>
 
-        <div>
-            <label for="priority" class="block text-sm font-medium text-gray-700">Priority</label>
-            <select name="priority" id="priority" class="mt-1 p-2 block w-full border border-gray-300 rounded-md">
-                <option value="High" {% if task[3] == 'High' %}selected{% endif %}>High</option>
-                <option value="Medium" {% if task[3] == 'Medium' %}selected{% endif %}>Medium</option>
-                <option value="Low" {% if task[3] == 'Low' %}selected{% endif %}>Low</option>
-            </select>
-        </div>
-
-        <div>
-            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md">Update Task</button>
-        </div>
-    </form>
+            <div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-r from-primary to-secondary hover:from-primary hover:to-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition duration-300 ease-in-out">
+                    Update Task
+                </button>
+            </div>
+        </form>
+    </div>
 {% endblock %}
